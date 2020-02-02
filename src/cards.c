@@ -13,7 +13,8 @@ int main()
 	puts("カード名を入れて下さい：");
 	scanf("%2s", card_name);
 	int val = 0;
-	if (card_name[0] == 'K') {
+	
+/*	if (card_name[0] == 'K') {
 		val = 10;
 	} else if (card_name[0] == 'Q') {
 		val = 10;
@@ -24,6 +25,28 @@ int main()
 	} else {
 		val = atoi(card_name);
 	}
+*/
+
+	switch(card_name[0]) {
+	case 'K':
+	case 'Q':
+	case 'J':
+		val = 10;
+		break;
+	case 'A':
+		val = 11;
+		break;
+	default:
+		val = atoi(card_name);
+	}
+		
+
+	/* 値が3から6かどうかを調べる */
+	if ((card_name[0] >= '3') && (card_name[0] <= '6'))
+		puts("カウントが増えます");
+	else if (val == 10)
+		puts("カウントが減ります");
+	
 	printf("カードの値：%i\n", val);
 	return 0;
 }
